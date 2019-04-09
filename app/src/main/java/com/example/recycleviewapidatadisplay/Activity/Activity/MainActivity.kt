@@ -43,13 +43,13 @@ class MainActivity : AppCompatActivity() {
         recycler_view!!.isNestedScrollingEnabled = true
 
 
+
     }
     private fun loadData() {
         val apiInterface = ApiClient.create()
         val call = apiInterface.getAllData
         call.enqueue(object : retrofit2.Callback<User> {
             override fun onResponse(call: retrofit2.Call<User>, response: Response<User>) {
-
                 if (response.isSuccessful) {
 
                     val dataDetails = response.body() as User
@@ -65,7 +65,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: retrofit2.Call<User>, t: Throwable) {
-
                 Log.e(TAG, t.message)
 
 
