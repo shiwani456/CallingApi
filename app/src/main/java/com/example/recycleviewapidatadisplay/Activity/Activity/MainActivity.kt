@@ -28,19 +28,13 @@ class MainActivity : AppCompatActivity() {
         init()
         recycler_view!!.setHasFixedSize(false)
         loadData()
-        mAdapter!!.notifyDataSetChanged()
+        //mAdapter!!.notifyDataSetChanged()
 
     }
     private fun init()
     {
 
         recycler_view = findViewById(R.id.recycler_view)
-        mAdapter = DataDisplayClass(user, this@MainActivity)
-        layoutManager = LinearLayoutManager(this@MainActivity)
-        recycler_view!!.layoutManager = layoutManager as RecyclerView.LayoutManager?
-        recycler_view!!.adapter = mAdapter
-        recycler_view!!.itemAnimator = DefaultItemAnimator()
-        recycler_view!!.isNestedScrollingEnabled = true
 
 
 
@@ -55,8 +49,13 @@ class MainActivity : AppCompatActivity() {
                     val dataDetails = response.body() as User
 
                    user = dataDetails
-                    Log.d( "Numberof" , ""+dataDetails.results.size);
-                    mAdapter!!.notifyDataSetChanged()
+                    mAdapter = DataDisplayClass(user, this@MainActivity)
+                    layoutManager = LinearLayoutManager(this@MainActivity)
+                    recycler_view!!.layoutManager = layoutManager
+                    recycler_view!!.adapter = mAdapter
+                    recycler_view!!.itemAnimator = DefaultItemAnimator()
+                    recycler_view!!.isNestedScrollingEnabled = true
+                    //mAdapter!!.notifyDataSetChanged()
 
 
                 }

@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.recycleviewapidatadisplay.Activity.model.Result
 import com.example.recycleviewapidatadisplay.Activity.model.User
 import com.example.recycleviewapidatadisplay.R
@@ -56,6 +57,7 @@ class DataDisplayClass(user :User?, context : Context?) : RecyclerView.Adapter<D
         val holder = p0 as ItemViewHolder
         Glide.with(context!!)
                 .load(data!!.picture.thumbnail)
+                .apply(RequestOptions.circleCropTransform())
                 .into(holder.userPictureImageView)
         holder.userNameTextView.text = data.name.title+" "+data.name.first+" "+data.name.last
         holder.userAgeTextView.text = data.dob.age.toString()
